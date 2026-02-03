@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { isSupabaseConfigured, supabase } from './utils/supabase'
+import { supabase } from './utils/supabase'
 import { useNavigate } from 'react-router-dom'
 import { Wallet, Loader2 } from 'lucide-react'
 
@@ -37,6 +37,12 @@ export default function Login() {
           },
         },
       })
+      if (error) {
+        alert(error.message)
+      } else {
+        alert('Check your email for the confirmation link!')
+        setView('LOGIN')
+      }
     }
     setLoading(false)
   }
