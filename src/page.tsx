@@ -140,7 +140,8 @@ export default function Dashboard() {
     const now = new Date()
     if (dateRange === 'THIS_MONTH') {
       const start = new Date(now.getFullYear(), now.getMonth(), 1)
-      return { start, end: now }
+      const end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999)
+      return { start, end }
     }
     if (dateRange === 'LAST_MONTH') {
       const start = new Date(now.getFullYear(), now.getMonth() - 1, 1)
@@ -399,6 +400,7 @@ export default function Dashboard() {
     setCategory('General')
     setType('EXPENSE')
     setEditingId(null)
+    fetchTransactions()
   }
 
   function handleEditClick(t: TransactionRow) {

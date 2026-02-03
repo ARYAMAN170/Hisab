@@ -11,29 +11,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
-  if (!isSupabaseConfigured || !supabase) {
-    return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
-        <div className="w-full max-w-md bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden">
-          <div className="bg-slate-900 p-8 text-center">
-            <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/10 mb-4 text-white">
-              <Wallet size={24} />
-            </div>
-            <h1 className="text-2xl font-bold text-white mb-2">Hisab</h1>
-            <p className="text-slate-400 text-sm">Supabase is not configured</p>
-          </div>
-          <div className="p-8 space-y-3 text-sm text-slate-600">
-            <p>Add your Supabase credentials to [.env](.env):</p>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>VITE_SUPABASE_URL</li>
-              <li>VITE_SUPABASE_ANON_KEY</li>
-            </ul>
-            <p>Then restart the dev server.</p>
-          </div>
-        </div>
-      </div>
-    )
-  }
+
 
   const supabaseClient = supabase as NonNullable<typeof supabase>
 
@@ -59,12 +37,6 @@ export default function Login() {
           },
         },
       })
-      if (error) {
-        alert(error.message)
-      } else {
-        alert("Check your email for the confirmation link!")
-        setView('LOGIN')
-      }
     }
     setLoading(false)
   }
