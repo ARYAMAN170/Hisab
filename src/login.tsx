@@ -37,12 +37,6 @@ export default function Login() {
           },
         },
       })
-      if (error) {
-        alert(error.message)
-      } else {
-        alert('Check your email for the confirmation link!')
-        setView('LOGIN')
-      }
     }
     setLoading(false)
   }
